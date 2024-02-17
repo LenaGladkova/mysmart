@@ -1,0 +1,10 @@
+button{
+    color: rgb(16, 116, 3);
+    border-color: chartreuse;
+}
+input{
+    border-color: chartreuse;
+}
+#result{
+    background-color: rgb(218, 255, 181);
+}
