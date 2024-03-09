@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('meths.jpg');
+}
+
+.calculator {
+    width: 350px;
+    border: 2px solid #008000;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
+}
+
+.buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 6px;
+        gap: 5px;
+        border-color: #1beb00;
+    }
+    .button {
+        padding: 10px;
+        border: 1px solid #1beb00;
+        background-color: #ecffe9;
+        cursor: pointer;
+        text-align: center;
+    }
+    .button:hover {
+        background-color: #9fff9f;
+    }
+    #display{
+        width: 240px;
+    }
+
+    .button1{
+        padding: 10px;
+        border: 1px solid #eb0000;
+        background-color: #ffe9e9;
+        cursor: pointer;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+        <div class="button" onclick="appendToDisplay('7')">7</div>
+         <div class="button" onclick="appendToDisplay('8')">8</div>
+         <div class="button" onclick="appendToDisplay('9')">9</div>
+         <div class="button" onclick="appendToDisplay('/')">÷</div>
+        <div class="button" onclick="appendToDisplay('4')">4</div>
+        <div class="button" onclick="appendToDisplay('5')">5</div>
+        <div class="button" onclick="appendToDisplay('6')">6</div>
+        <div class="button" onclick="appendToDisplay('*')">x</div>
+        <div class="button" onclick="appendToDisplay('1')">1</div>
+        <div class="button" onclick="appendToDisplay('2')">2</div>
+        <div class="button" onclick="appendToDisplay('3')">3</div>
+        <div class="button" onclick="appendToDisplay('-')">-</div>
+        <div class="button" onclick="appendToDisplay('0')">0</div>
+        <div class="button" onclick="appendToDisplay('.')">.</div>
+        <div class="button" onclick="clearDisplay()">C</div>
+        <div class="button" onclick="calculate()">=</div>
+        <div class="button" onclick="appendToDisplay('+')">+</div>
+        <div class="button" onclick="calculateSquareRoot()">√</div>
+        <div class="button" onclick="calculateSin()">sin</div>
+        <div class="button" onclick="calculateCos()">cos</div>
+        <div class="button" onclick="calculateSquare()">x²</div>
+        <div class="button" onclick="calculateCube()">x³</div>
+    
+    </div>
+    <button class="button1" onclick="clearDisplay()">Очистить</button>
+</div>
+
+<script>
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function calculate() {
+        var expression = document.getElementById('display').value;
+        var operatorIndex = expression.indexOf('%');
+        if (operatorIndex !== -1) {
+            var numbers = expression.split('%');
+            var percent = parseFloat(numbers[0]);
+            var baseNumber = parseFloat(numbers[1]);
+            var result = (percent / 100) * baseNumber;
+            document.getElementById('display').value = result;
+        } else {
+            var result = eval(expression);
+            document.getElementById('display').value = result;
+        }
+    }
+    
+    function calculateSquareRoot() {
+        var expression = document.getElementById('display').value;
+        var result = Math.sqrt(parseFloat(expression));
+        document.getElementById('display').value = result;
+    }
+    
+    function calculateSin() {
+        var expression = document.getElementById('display').value;
+        var result = Math.sin(parseFloat(expression));
+        document.getElementById('display').value = result;
+    }
+    
+    function calculateCos() {
+        var expression = document.getElementById('display').value;
+        var result = Math.cos(parseFloat(expression));
+        document.getElementById('display').value = result;
+    }
+    
+    function calculateSquare() {
+        var expression = document.getElementById('display').value;
+        var result = Math.pow(parseFloat(expression), 2);
+        document.getElementById('display').value = result;
+    }
+    
+    function calculateCube() {
+        var expression = document.getElementById('display').value;
+        var result = Math.pow(parseFloat(expression), 3);
+        document.getElementById('display').value = result;
+    }
+    
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+
+</script>
+
+</body>
+</html>
